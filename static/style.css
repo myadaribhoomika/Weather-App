@@ -1,8 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* 🌌 Background */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #5f9cff, #8b5cf6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 📱 App Layout */
+.app {
+    display: flex;
+    width: 900px;
+    height: 550px;
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.1);
+}
+
+/* LEFT PANEL */
+.left-panel {
+    width: 35%;
+    padding: 20px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.left-panel h2 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* RIGHT PANEL */
+.right-panel {
+    width: 65%;
+    padding: 20px;
+    color: #fff;
+}
+
+/* WEATHER CARD */
+.main-card {
+    text-align: center;
+}
+
 .icon {
     font-size: 70px;
     margin: 10px 0;
 }
 
+.main-card h1 {
+    font-size: 60px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+/* FORECAST */
 .forecast {
     margin-top: 20px;
 }
@@ -24,4 +102,21 @@
 .forecast-card i {
     font-size: 25px;
     margin: 5px 0;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+    }
+
+    .left-panel, .right-panel {
+        width: 100%;
+    }
+
+    .main-card h1 {
+        font-size: 40px;
+    }
 }
