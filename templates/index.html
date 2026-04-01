@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- ICONS (NO IMAGES NEEDED) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
 
@@ -27,10 +32,14 @@
         {% if weather %}
         <div class="main-card">
 
-            <!-- ICON FIX -->
-            <img src="{{ url_for('static', filename='assets/' + 
-                ('cloud.png' if 'cloud' in weather.main else 
-                 'rain.png' if 'rain' in weather.main else 'sun.png')) }}" class="icon">
+            <!-- WEATHER ICON -->
+            {% if 'cloud' in weather.main %}
+                <i class="fas fa-cloud icon"></i>
+            {% elif 'rain' in weather.main %}
+                <i class="fas fa-cloud-showers-heavy icon"></i>
+            {% else %}
+                <i class="fas fa-sun icon"></i>
+            {% endif %}
 
             <h1>{{ weather.temp }}°</h1>
             <h2>{{ weather.city }}</h2>
@@ -41,27 +50,33 @@
                 <p>💨 {{ weather.wind }} m/s</p>
             </div>
         </div>
-        {% else %}
-        <div class="placeholder">
-            <h2>Search for a city</h2>
-        </div>
         {% endif %}
 
-        <!-- FORECAST -->
+        <!-- 🔥 FORECAST SECTION -->
         {% if forecast %}
         <div class="forecast">
-            {% for day in forecast %}
-            <div class="forecast-card">
+            <h3>5-Day Forecast</h3>
 
-                <p>{{ day.date }}</p>
+            <div class="forecast-row">
+                {% for day in forecast %}
+                <div class="forecast-card">
 
-                <img src="{{ url_for('static', filename='assets/' + 
-                    ('cloud.png' if 'cloud' in day.main else 
-                     'rain.png' if 'rain' in day.main else 'sun.png')) }}">
+                    <p>{{ day.date }}</p>
 
-                <p>{{ day.temp }}°</p>
+                    <!-- FORECAST ICON -->
+                    {% if 'cloud' in day.main %}
+                        <i class="fas fa-cloud"></i>
+                    {% elif 'rain' in day.main %}
+                        <i class="fas fa-cloud-showers-heavy"></i>
+                    {% else %}
+                        <i class="fas fa-sun"></i>
+                    {% endif %}
+
+                    <p>{{ day.temp }}°</p>
+
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
         {% endif %}
 
