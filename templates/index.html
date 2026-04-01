@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+        <h2>🌤 Weather App</h2>
+
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter city..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+
+        {% if weather %}
+        <div class="main-card">
+
+            <!-- ICON FIX -->
+            <img src="{{ url_for('static', filename='assets/' + 
+                ('cloud.png' if 'cloud' in weather.main else 
+                 'rain.png' if 'rain' in weather.main else 'sun.png')) }}" class="icon">
+
+            <h1>{{ weather.temp }}°</h1>
+            <h2>{{ weather.city }}</h2>
+            <p>{{ weather.desc }}</p>
+
+            <div class="details">
+                <p>💧 {{ weather.humidity }}%</p>
+                <p>💨 {{ weather.wind }} m/s</p>
+            </div>
+        </div>
+        {% else %}
+        <div class="placeholder">
+            <h2>Search for a city</h2>
+        </div>
+        {% endif %}
+
+        <!-- FORECAST -->
+        {% if forecast %}
+        <div class="forecast">
+            {% for day in forecast %}
+            <div class="forecast-card">
+
+                <p>{{ day.date }}</p>
+
+                <img src="{{ url_for('static', filename='assets/' + 
+                    ('cloud.png' if 'cloud' in day.main else 
+                     'rain.png' if 'rain' in day.main else 'sun.png')) }}">
+
+                <p>{{ day.temp }}°</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

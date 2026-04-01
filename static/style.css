@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* 🌌 Background */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #5f9cff, #8b5cf6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 📱 App Container */
+.app {
+    display: flex;
+    width: 900px;
+    height: 550px;
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.1);
+}
+
+/* 📌 Left Panel */
+.left-panel {
+    width: 35%;
+    padding: 25px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.left-panel h2 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    margin-bottom: 12px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+}
+
+/* 📌 Right Panel */
+.right-panel {
+    width: 65%;
+    padding: 25px;
+    color: #fff;
+}
+
+/* 🌤 Weather */
+.main-card {
+    text-align: center;
+}
+
+.icon {
+    width: 90px;
+}
+
+.main-card h1 {
+    font-size: 60px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+/* 📊 Forecast */
+.forecast {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+    overflow-x: auto;
+}
+
+.forecast-card {
+    min-width: 80px;
+    background: rgba(255,255,255,0.2);
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.forecast-card img {
+    width: 40px;
+}
+
+/* 📍 Placeholder */
+.placeholder {
+    text-align: center;
+    margin-top: 120px;
+}
+
+/* ============================= */
+/* 📱 MOBILE DEVICES (≤ 768px) */
+/* ============================= */
+@media (max-width: 768px) {
+
+    .app {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+    }
+
+    .left-panel {
+        width: 100%;
+        text-align: center;
+    }
+
+    .right-panel {
+        width: 100%;
+    }
+
+    .main-card h1 {
+        font-size: 42px;
+    }
+
+    .icon {
+        width: 70px;
+    }
+
+    .details {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* ============================= */
+/* 📱 SMALL MOBILE (≤ 480px) */
+/* ============================= */
+@media (max-width: 480px) {
+
+    .app {
+        border-radius: 0;
+    }
+
+    input, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .main-card h1 {
+        font-size: 36px;
+    }
+
+    .forecast-card {
+        min-width: 70px;
+        padding: 8px;
+    }
+
+    .forecast-card img {
+        width: 30px;
+    }
+}
+
+/* ============================= */
+/* 💻 TABLET (769px–1024px) */
+/* ============================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .app {
+        width: 95%;
+        height: auto;
+    }
+
+    .main-card h1 {
+        font-size: 50px;
+    }
+}
+
+/* ============================= */
+/* 🖥 LARGE SCREEN (≥ 1200px) */
+/* ============================= */
+@media (min-width: 1200px) {
+
+    .app {
+        width: 1000px;
+        height: 600px;
+    }
+
+    .main-card h1 {
+        font-size: 70px;
+    }
+}
