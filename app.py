@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
 import requests
+import os
 
 app = Flask(__name__)
 
-API_KEY = "3f0a484d3c9ccbd81dc10f3225581b66"
+API_KEY = os.getenv("API_KEY", "3f0a484d3c9ccbd81dc10f3225581b66")
 
 
 def fetch_weather(city):
